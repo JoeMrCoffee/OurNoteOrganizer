@@ -51,6 +51,14 @@ Users and their associated groups can be adjusted in the 'USERS' section. Curren
 
 To create a new group, simply edit a user and add another group. <strong>Each group needs to be separated by a comma.</strong>
 
+### Mongo Express
+
+The docker-compose.yml file includes the parameters to also create a Mongo Express container that allows for easier management and debugging of the MongoDB environment. It is commented out as it can be a security risk if deployed 24/7 in a production environment. 
+
+Mongo Express is a really handy tool to do fairly complex tasks with the MongoDB databases, but it requires no login if the credentials supplied in the Docker container are provided. Recommend using it when needed. 
+
+I have found that the Mongo Express container can often fail to start if the MongoDB container is started at the same time. Based on what I have seen in the docker-compose start output, I believe this is due to the MongoDB container provisioning time takes longer and if it isn't ready to accept the Mongo Express connection, the Mongo Express container terminates. Simply running a 'docker start mongoex' command once the MongoDB container is fully running has proven a reliable work around. 
+
 ### A word on TinyMCE
 
 TinyMCE is an external text editor which is used to help enhance the ease for writing and editing posts. It is an external tool that requires connectivity to external networks in order to function. For environments that do not have external Internet connectivity a standard textarea that does not offer rich formatting is employed. 
