@@ -11,9 +11,11 @@ OurNoteOrganizer is an interactive website that uses primarily HTML/PHP with a M
 
 The easiest way to begin using OurNoteOrganizer is to run a git clone, then using Docker and Docker Compose run 'docker-compose up' in the main directory. This will auto install and run an Apache + PHP web environment along with another MongoDB environment. Parameters such as the DB password can be adjusted in the docker-compose.yml file as desired.
 
-NOTE: If the DB password is adjusted, the login parameters in the web environment also need to be adjusted. This can be done by editing the header.php file:
+NOTE: If the DB password is adjusted, the login parameters in the web environment also need to be adjusted. This can be done by editing the mongologin.ini file:
 
-    $connection = new MongoDB\Client("mongodb://root:<mongopwd>@mongo:27017");
+    ip = mongo
+    user = root
+    pwd = mongopwd
 
 Alternatively, for users looking to run in a more permenant environment using physical or virtual machines rather than containers, a LAMP stack with a MongoDB server can also be built. Just ensure that the MongoDB login parameters match those of the web environment's connection. 
 
