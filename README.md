@@ -58,5 +58,7 @@ TinyMCE is an external text editor which is used to help enhance the ease for wr
 As this project is made to be hosted on any on-prem environment, there is no TinyMCE API key provided or registered. Users can create their own keys based on their domains and needs. To remove the notification about getting started, users can follow the quick steps, create their own API key, and add it to line 8 of the newpost.php file.
 
 More information on TinyMCE and getting started: 
+
 https://www.tiny.cloud/
+
 https://www.tiny.cloud/docs/quick-start/
