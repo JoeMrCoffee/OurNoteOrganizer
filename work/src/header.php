@@ -5,7 +5,7 @@
     $user = $login['user'];
     $pwd = $login['pwd'];
     $connection = new MongoDB\Client("mongodb://$user:$pwd@$ip:27017");
-	$db = $connection-> notestest; ////poststest; // //gettingstarted
+	$db = $connection-> postsdb;
 ?>
 
 <!DOCTYPE html>
