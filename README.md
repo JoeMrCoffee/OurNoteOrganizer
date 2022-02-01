@@ -40,8 +40,10 @@ New posts can be created simply by clicking the 'NEW POST' link on the top title
 To edit or update posts, users can click 'VIEW' and then 'EDIT POST'. If a color or image has been defined with the post a preview of each will be shown.
 
 ### User and group management
+<div align='center'><img src='ournoteorganizer.png' width='500px'></div>
 
-Users and their associated groups can be adjusted in the 'USERS' section. Currently, only users who are labeled as Admins can adjust the user settings including the associated groups for each user, and add or delete users.
+Users and their associated groups can be adjusted in the 'USERS' section. Currently, only users who are labeled as Admins can adjust the user settings including the associated groups for each user, and add or delete users. Users can adjust their own passwords, however using the dropdown under the user name.
+<div align='center'><img src='OurNoteOrganizer-edituser.png' width='500px'></div>
 
 To create a new group, simply edit a user and add another group. <strong>Each group needs to be separated by a comma.</strong>
 
