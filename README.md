@@ -29,21 +29,25 @@ Currently the login credentials are separated in mongologin.ini which gets read 
 
 ### Basic use and organization
 
+<div align='center'><img src='ournoteorganizer.png' width='500px'></div>
+
 OurNoteOrganizer groups notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign. Once multiple users are part of the same group all users are able to view and jointly edit / update the notes. 
 
 The initial home page displays all notes available to the user; both his/her notes or notes where he/she is a group member. The posts are displayed as small squares with their assigned colors. Clicking 'VIEW' on any note allows for viewing the full note or article. 
 
 The search bar at the top allows searching through the notes by associated group and post name.
 
+<div align='center'><img src='OurNoteOrganizer-newpost.png' width='500px'></div>
+
 New posts can be created simply by clicking the 'NEW POST' link on the top title bar. The author is bound to the logged in user, post name, image, and highlight color can be defined, the associate group can be selected, and note content can be added.
 
 To edit or update posts, users can click 'VIEW' and then 'EDIT POST'. If a color or image has been defined with the post a preview of each will be shown.
 
 ### User and group management
-<div align='center'><img src='ournoteorganizer.png' width='500px'></div>
+<div align='center'><img src='OurNoteOrganizer-edituser.png' width='500px'></div>
 
 Users and their associated groups can be adjusted in the 'USERS' section. Currently, only users who are labeled as Admins can adjust the user settings including the associated groups for each user, and add or delete users. Users can adjust their own passwords, however using the dropdown under the user name.
-<div align='center'><img src='OurNoteOrganizer-edituser.png' width='500px'></div>
+
 
 To create a new group, simply edit a user and add another group. <strong>Each group needs to be separated by a comma.</strong>
 
