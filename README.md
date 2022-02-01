@@ -2,7 +2,7 @@
 
 OurNoteOrganizer is a web-based note taking tool designed for small teams to use. It is built for non-Cloud, on-prem deployments and is paired with a Docker-Compose file for rapid deployment. 
 
-The project first began as a proof-of-concept for exploring what can be done with PHP and MongoDB. To an extent, it still is as many features are still being developed or refined. This initial release is as much to gather community feedback as it is to share what could be a useful tool to certain teams. 
+The project first began as a proof-of-concept for exploring what can be done with PHP and MongoDB. To an extent, it still is a POC, as many features are still being developed or refined. This initial release is as much to gather community feedback as it is to share what could be a useful tool to certain teams. 
 
 ### Structure
 OurNoteOrganizer is an interactive website that uses primarily HTML/PHP with a MongoDB backend to store data. A sample environment is provided using Docker and Docker Compose.
@@ -23,7 +23,7 @@ Once running the containers without errors, navigate to the localhost or address
 
 #### Sercurity
 
-To better harden the security the MongoDB access should not be as I have in the reference code. 
+To improve data security, MongoDB access should not be as I have in the reference code. 
 
 Currently the login credentials are separated in mongologin.ini which gets read in header.php and applied to all the sub-pages. Ideally, the .ini file can be placed outside of the web server source (/var/www/html - Apache default), and on the server in a secure location with read-only access to the apache service user. Something like 'chown apache:apache mongologin.ini' would probably work in most Linux environments. Always be careful with access credentials.
 
@@ -39,9 +39,23 @@ The search bar at the top allows searching through the notes by associated group
 
 <div align='center'><img src='OurNoteOrganizer-newpost.png' width='500px'></div>
 
-New posts can be created simply by clicking the 'NEW POST' link on the top title bar. The author is bound to the logged in user, post name, image, and highlight color can be defined, the associate group can be selected, and note content can be added.
+New posts can be created simply by clicking the 'NEW POST' link on the top title bar. The author is bound to the logged in user. Post name, image, and highlight color can be defined, the associate group can be selected, and note content can be added.
 
-To edit or update posts, users can click 'VIEW' and then 'EDIT POST'. If a color or image has been defined with the post a preview of each will be shown.
+To edit or update posts, users can click 'VIEW' and then 'EDIT POST'. If a color or image has been defined with the post a preview of each will be shown. When editing a post the original Author is kept as the source editor/author of the post regardless of who in the team is editing. This behavior may need to be adjusted in the future, but for now it is kept simple.
+
+#### Uploading images
+
+Each post or note can have an associated image included. All images appear in the top center of the post, and will also show at a smaller scale in the overview page (noteshome.php) and when editing a post. Changing the image will overwrite the original image association. 
+
+<strong>Note: </strong>All image files will continue to exist on the server under the folder images even if changed. An area for future improvement could be to create a way to identify and remove unused images overtime, but for now is out-of-scope of this project.
+
+##### Problems uploading images
+
+Images are uploaded using an HTML POST to PHP which then moves the file from temporary storage to a permanent location in the 'images' directory. There are a couple of potential issues that could cause the file upload to fail. 
+
+1. The directory permisions of the 'image' directory is not the correct permision level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown apache:apache images' for Debian/Ubuntu derivatives or 'chown httpd:httpd images' for RedHat derivatives. Per the Docker containers provided, running a volume passtrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what I has worked is running 'chmod 777 images' to all complete directory access to the container. This method is probably not suitable for real production, but can work for those interested in playing with the project or can ensure a strong firewalled environment.
+
+2. The file size may be simply too large to upload. In the Docker environment included, the default upload_max_filesize is 2 MB (this can be shown in the phpinfo.php page also included). To adjust this a user can change the config.ini files in PHP, but do so with caution and also bear in mind timeout time and other netwokring factors. This project is <strong>NOT</strong> designed to be a file upload service. 
 
 ### User and group management
 <div align='center'><img src='OurNoteOrganizer-edituser.png' width='500px'></div>
@@ -70,3 +84,7 @@ More information on TinyMCE and getting started:
 https://www.tiny.cloud/
 
 https://www.tiny.cloud/docs/quick-start/
+
+### SSL - Be Careful and Be Safe
+
+Regardless of whether the deployment is on-prem or paired with a external WAN connection, SSL/TLS should be considered. It should be possible - though I have not tried during development - to install and run Let's Encrypt with Certbot on the container for quick and easy SSL set up. Users can also apply their own or trusted third-party SSL key to the Apache config files. If run in a different environment, i.e. NGINX, same rules apply. Please be careful with your data, and please use SSL if installing for anything else than a simple test environment that runs for a short amount of time each session.
