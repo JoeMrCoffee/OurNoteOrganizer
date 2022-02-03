@@ -9,7 +9,7 @@ OurNoteOrganizer is an interactive website that uses primarily HTML/PHP with a M
 
 ### Installation
 
-The easiest way to begin using OurNoteOrganizer is to run a git clone, then using Docker and Docker Compose run 'docker-compose up' in the main directory. This will auto install and run an Apache + PHP web environment along with another MongoDB environment. Parameters such as the DB password can be adjusted in the docker-compose.yml file as desired.
+The easiest way to begin using OurNoteOrganizer is to run a Git clone, then, using Docker and Docker Compose, run 'docker-compose up' in the main directory. This will auto install and run an Apache + PHP web environment along with another MongoDB environment. Parameters such as the DB password can be adjusted in the docker-compose.yml file as desired.
 
 NOTE: If the DB password is adjusted, the login parameters in the web environment also need to be adjusted. This can be done by editing the mongologin.ini file:
 
@@ -25,7 +25,7 @@ Once running the containers without errors, navigate to the localhost or address
 
 To improve data security, MongoDB access should not be as I have in the reference code. 
 
-Currently the login credentials are separated in mongologin.ini which gets read in header.php and applied to all the sub-pages. Ideally, the .ini file can be placed outside of the web server source (/var/www/html - Apache default), and on the server in a secure location with read-only access to the apache service user. Something like 'chown apache:apache mongologin.ini' would probably work in most Linux environments. Always be careful with access credentials.
+Currently the login credentials are separated in mongologin.ini which gets read in header.php and applied to all the sub-pages.  ideally, the .ini file can be placed outside of the web server source (/var/www/html - Apache default), and on the server in a secure location with read-only access to the apache service user. Something like 'chown apache:apache mongologin.ini' would probably work in most Linux environments. Always be careful with access credentials.
 
 ### Basic use and organization
 
@@ -53,7 +53,7 @@ Each post or note can have an associated image included. All images appear in th
 
 Images are uploaded using an HTML POST to PHP which then moves the file from temporary storage to a permanent location in the 'images' directory. There are a couple of potential issues that could cause the file upload to fail. 
 
-1. The directory permisions of the 'image' directory is not the correct permision level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown apache:apache images' for Debian/Ubuntu derivatives or 'chown httpd:httpd images' for RedHat derivatives. Per the Docker containers provided, running a volume passtrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what I has worked is running 'chmod 777 images' to all complete directory access to the container. This method is probably not suitable for real production, but can work for those interested in playing with the project or can ensure a strong firewalled environment.
+1. The directory permisions of the 'image' directory is not the correct permision level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown apache:apache images' for Debian/Ubuntu derivatives or 'chown httpd:httpd images' for RedHat derivatives. Per the Docker containers provided, running a volume passtrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what has worked is running 'chmod 777 images' to allow write and execute access to the container. This method is probably not suitable for real production, but can work for those interested in playing with the project or can ensure a strong firewalled environment.
 
 2. The file size may be simply too large to upload. In the Docker environment included, the default upload_max_filesize is 2 MB (this can be shown in the phpinfo.php page also included). To adjust this a user can change the config.ini files in PHP, but do so with caution and also bear in mind timeout time and other netwokring factors. This project is <strong>NOT</strong> designed to be a file upload service. 
 
