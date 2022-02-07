@@ -21,7 +21,9 @@ Alternatively, for users looking to run in a more permenant environment using ph
 
 Once running the containers without errors, navigate to the localhost or address/domain name of the host system. The home screen should appear. Default username is 'admin', password is also 'admin'. The password can be changed once logged in.
 
-#### Run through: [https://www.youtube.com/watch?v=tx--3IZ9JIU](url)
+#### Run through: 
+
+<a href='https://www.youtube.com/watch?v=tx--3IZ9JIU' target='_blank'>Run through video on YouTube</a>
 
 #### Sercurity
 
