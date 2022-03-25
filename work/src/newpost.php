@@ -71,7 +71,7 @@
                 <input type='hidden' name='postid' value='$postid'>
                 Note highlight color: <input type='color' name='postcolor' value='$postcolor'></h4>";
             
-            if($postimage != "none" && $postimage != null){ echo "Current image: <img src=$postimage style='max-height: 100px;'><br><br>"; }
+            if($postimage != "none" && $postimage != null){ echo "Current image: <img src='$postimage' style='max-height: 100px;'><br><br>"; }
                 
             echo "
                 Insert a new image with post? <input type='file' name='postimage'><br><br>
