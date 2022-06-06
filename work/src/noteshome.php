@@ -40,9 +40,11 @@
 
 	    $item=0;
 
+        //Search bar
         echo "<tr><td class='search' colspan='4'>
         <form method='post' action='".$_SERVER['PHP_SELF']."'>    
-        <input name='notesearch' type='text' class='search' placeholder='Search by group or post name'>  <input class='search' type='submit' value='SEARCH' ></form>
+        <input name='notesearch' type='text' class='search' placeholder='Search by group or post name'>  
+        <input class='search' type='submit' value='SEARCH' ></form>
         </td></tr>
         <tr>";
         foreach ($record as $note) {

@@ -6,16 +6,17 @@
 
 
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>tinymce.init({ selector:'textarea#notepost', height: 500, plugins: 'lists', 
-    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncentre alignright alignjustify | indent outdent | bullist'  });</script>
+<script>tinymce.init({ selector:'textarea#notepost', height: 500, plugins: 'lists',
+    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncentre alignright alignjustify | indent outdent | bullist'
+     });</script>
 
 <!-- Reference for the TinyCE https://www.tiny.cloud/ -->
-
 
 
 <?php
     if ($validity == "valid"){
         $col = $db -> posts;
+        //Are we editing?
         if (isset($_POST['Edit'])) {
         
             $name = $_POST['name'];
@@ -93,6 +94,7 @@
                 </div>";
 
         }
+        //It's a brand new post
         else {
             //get the available groups
             $groupsSTR = "";

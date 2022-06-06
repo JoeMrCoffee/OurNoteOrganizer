@@ -5,7 +5,7 @@
     $user = $login['user'];
     $pwd = $login['pwd'];
     $connection = new MongoDB\Client("mongodb://$user:$pwd@$ip:27017");
-	$db = $connection-> postsdb;
+	$db = $connection-> notestest; ////poststest; // //gettingstarted
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +79,18 @@ div.post {
 img {
     border-radius: 7px;
 }
+button{
+    min-width: 50px;
+    background-color: #fc034e;
+    padding: 5px;
+    border-radius: 18px;
+    border-color: #fc034e;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 0;
+    border: none;
+}
+
 
 input[type=submit]{
     min-width: 50px;
@@ -189,7 +201,7 @@ select {
 
 
 .giantinput {
-    min-height: 400px;
+    min-height: 250px;
     min-width: 800px;
     word-wrap: break-word;
     font-family: Sans-serif;
