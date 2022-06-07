@@ -12,7 +12,7 @@
         $postname = $_POST['postname'];
 
     
-        $insertcomment = ['author' => $username, "comment" => $comment, 'postname' => $postname];
+        $insertcomment = ['author' => $username, 'comment' => $comment, 'postname' => $postname];
         if ($postcomment = $col->insertOne($insertcomment)){
                 echo "<h3>Comment added to $postname. </h3>";
         }
