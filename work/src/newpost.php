@@ -39,9 +39,10 @@
             }
             
             //get the available groups
+           //07252022 - update to only search the groups the user is a member of
             $groupsSTR = "";
             $usercol = $db -> users;
-            $groupsrch = $usercol -> find();
+            $groupsrch = $usercol -> find([ 'username' =>$loginuser ]);
            
             foreach ($groupsrch as $usrgrp) {
                 $usergroups = $usrgrp['groups'];
@@ -97,9 +98,10 @@
         //It's a brand new post
         else {
             //get the available groups
+            //07252022 - update to only search the groups the user is a member of
             $groupsSTR = "";
             $usercol = $db -> users;
-            $groupsrch = $usercol -> find();
+            $groupsrch = $usercol -> find([ 'username' =>$loginuser ]);
            
             foreach ($groupsrch as $usrgrp) {
                 $usergroups = $usrgrp['groups'];
