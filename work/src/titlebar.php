@@ -33,7 +33,7 @@
     else { echo "<td></td>"; }
     
     echo "<td></td><td></td><td></td><td></td>
-            <td width='200px' class='title usrname'>Welcome: $loginuser
+            <td width='250px' class='title usrname'>Welcome: $loginuser
             <div class='logoutdropdown'>
             <a href='changepwd.php' class='titlelink dropdownlink'>CHANGE PASSWORD</a><br>
             ----------------------------<br>
