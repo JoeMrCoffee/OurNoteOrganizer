@@ -25,6 +25,7 @@
 	    else { $postimgname = "none"; }
 	    
 	    $note = str_replace("'", "&apos;", $note);
+	    $postname = str_replace("'", "&apos;", $postname);
 	    
 	    $doc = ["name" => $name,"postname" => $postname,"blog" => $note, "postcolor" => $postcolor, 'postimage' => $postimgname, 'date' => $todaydate, 'groups'=> $postgroups];
 	    
