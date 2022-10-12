@@ -8,11 +8,12 @@
         //Get post info
 	    $name = $_POST['name'];
 	    $postname = $_POST['postname'];
+	    $postid = $_POST['postid'];
 	    $content = "";
 	    $postcolor = $_POST['postcolor'];
-	    
+
 	    //Search for other parameters like post content and associated image
-	    $record = $col->find( [ 'name'=> $name, 'postname'=> $postname ] );
+	    $record = $col->find( [ '_id' => new MongoDB\BSON\ObjectId($postid) ] );
         foreach ($record as $post) {
             $content = $post['blog'];
             echo "<h3>".$post['postname']."</h3>";
