@@ -12,8 +12,9 @@
 	    $postcolor = $_POST['postcolor'];
 	    $todaydate = date("Y-m-d");
 	    $postgroups = $_POST['postgroups'];
-
-        $note = str_replace("'", "&apos;", $note);
+	    
+	    $note = str_replace("'", "&apos;", $note);
+	    $postname = str_replace("'", "&apos;", $postname);
 
 	    //Update or Edit the original post
 	    if (isset($_POST['Edit'])){
