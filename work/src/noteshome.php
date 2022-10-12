@@ -52,7 +52,7 @@
             $postname=$note['postname'];
             $postcolor=$note['postcolor'];
             $postdate = $note['date'];
-	    $postid = $note['_id'];
+            $postid = $note['_id'];
             $postimage = "";
             if(isset($note['postimage'])){ $postimage = $note['postimage']; }
             
@@ -79,7 +79,7 @@
                     <input type='hidden' name='name' value='$name'>
                     <input type='hidden' name='postname' value='$postname'>
                     <input type='hidden' name='postcolor' value='$postcolor'>
-		    <input type='hidden' name='postid' value='$postid'>
+                    <input type='hidden' name='postid' value='$postid'>
                     <input type='submit' value='VIEW' class='view'></div></form></td>";
             
                 $item++;
@@ -97,7 +97,7 @@
                     <input type='hidden' name='name' value='$name'>
                     <input type='hidden' name='postname' value='$postname'>
                     <input type='hidden' name='postcolor' value='$postcolor'>
-		    <input type='hidden' name='postid' value='$postid'>
+                    <input type='hidden' name='postid' value='$postid'>
                     <input type='submit' value='VIEW' class='view'></div></form></td>";
             
             }

@@ -12,16 +12,15 @@
 	    $postcolor = $_POST['postcolor'];
 	    $todaydate = date("Y-m-d");
 	    $postgroups = $_POST['postgroups'];
-	    
-	    $note = str_replace("'", "&apos;", $note);
-	    $postname = str_replace("'", "&apos;", $postname);
 
+        $note = str_replace("'", "&apos;", $note);
+		$postname = str_replace("'", "&apos;", $postname);
 	    //Update or Edit the original post
 	    if (isset($_POST['Edit'])){
-	        //save file to permenant directory
+	        //save file to permanent directory
 	        if ( $_FILES['postimage']['tmp_name'] != null ){
 	            $postimage = basename($_FILES['postimage']['name']);
-            	$tmpimage = $_FILES['postimage']['tmp_name'];
+				$tmpimage = $_FILES['postimage']['tmp_name'];
 	            $curdir = getcwd();
                 $savefile = $curdir."/images/".$postimage; //changing this a bit, may need an extra space between the " . $postimage for the basename function
                 $postimgname = "images/".$postimage;

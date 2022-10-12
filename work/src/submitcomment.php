@@ -10,9 +10,9 @@
         $username = $_POST['author'];
         $comment = $_POST['commentcontent'];
         $postname = $_POST['postname'];
+        $postid = $_POST['postid'];
 
-    
-        $insertcomment = ['author' => $username, 'comment' => $comment, 'postname' => $postname];
+        $insertcomment = ['author' => $username, 'comment' => $comment, 'postname' => $postname, 'postid' => $postid];
         if ($postcomment = $col->insertOne($insertcomment)){
                 echo "<h3>Comment added to $postname. </h3>";
         }

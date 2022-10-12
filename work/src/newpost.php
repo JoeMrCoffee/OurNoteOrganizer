@@ -22,7 +22,7 @@
             $name = $_POST['name'];
             $postname = $_POST['postname'];
             $content = $_POST['notecontent'];
-            $postid = "";
+            $postid = $_POST['postid'];
             $postcolor = $_POST['postcolor'];
             $postimage = ""; //define first but only assign if the image is set during DB find.
             
@@ -30,16 +30,16 @@
                 $postcolor = "#ffffff";
             }
 
-            $record = $col->find( [ 'name' =>$name, 'postname'=>$postname] );  
-            foreach ($record as $post) {  
-                $postid = $post['_id'];
+            $record = $col->find( [ '_id' => new MongoDB\BSON\ObjectId($postid) ] );  
+            foreach ($record as $post) {
                 if(isset($post['postimage'])){ $postimage = $post['postimage']; }
                 if(isset($post['groups'])){ $postgroups = $post['groups']; }
                 else { $postgroups = ""; } 
             }
             
             //get the available groups
-           //07252022 - update to only search the groups the user is a member of
+            //07252022 - update to only search the groups the user is a member of
+            //10122022 - cleaned up the code, working off unique IDs instead of values
             $groupsSTR = "";
             $usercol = $db -> users;
             $groupsrch = $usercol -> find([ 'username' =>$loginuser ]);
@@ -47,18 +47,9 @@
             foreach ($groupsrch as $usrgrp) {
                 $usergroups = $usrgrp['groups'];
 	            $usergroups = str_replace(" ", "", $usergroups);
-	            if ($groupsSTR == "") {
-	                $groupsSTR = $usergroups;
-                }
-	            else {
-	                $groupsSTR = $groupsSTR.",".$usergroups;
-                }
-	      
             }
-            //change the string to an array and remove duplicates
-            $usrgrparray = explode(",", $groupsSTR);
-            $groupsarray = array_unique($usrgrparray);
-            
+            $usrgrparray = explode(",", $usergroups);
+
             echo "<h3>Edit post</h3>
                 <div class='postlink post'>
                 <table width='100%'><tr><td colspan='14'>
@@ -66,7 +57,7 @@
                 <h4>Name: $name<input type='hidden' name='name' value='$name'><br><br>
                 Note title: $postname<input type='hidden' name='postname' value='$postname'></h4>
                 <h4>Associated Group: <select name='postgroups'><option value='$postgroups' selected>$postgroups</option>";
-            foreach($groupsarray as $groupoption) {
+            foreach($usrgrparray as $groupoption) { //Originally $groupsarray, not $usergroups
                 echo "<option value='$groupoption'>$groupoption</option>";
             }            
             echo "</select></h4><h4>
@@ -77,7 +68,7 @@
                 
             echo "
                 Insert a new image with post? <input type='file' name='postimage'><br><br>
-                    <input type='hidden' name='postimageexists' value='$postimage'>
+                <input type='hidden' name='postimageexists' value='$postimage'>
                 Note post: <br><textarea class='giantinput' id='notepost' type='text' name='notecontent'>$content</textarea></td></tr>
                 <tr><td style='max-width: 80px;'><input type='submit' name='Edit' value='SUBMIT' form='updatepost'></form></td>
                 
@@ -106,16 +97,9 @@
             foreach ($groupsrch as $usrgrp) {
                 $usergroups = $usrgrp['groups'];
 	            $usergroups = str_replace(" ", "", $usergroups);
-	            if ($groupsSTR == "") {
-	                $groupsSTR = $usergroups;
-                }
-	            else {
-	                $groupsSTR = $groupsSTR.",".$usergroups;
-                }
+
             }
-            //change the string to an array and remove duplicates
-            $usrgrparray = explode(",", $groupsSTR);
-            $groupsarray = array_unique($usrgrparray);
+            $usrgrparray = explode(",", $usergroups);
         
             echo "<h3>New post</h3>
                 <div class='postlink post'>
@@ -123,7 +107,7 @@
                 <h4>Name: $loginuser<input type='hidden' name='name' value='$loginuser'><br><br>
                 Note title: <input type='text' name='postname'><br><br></h4>
                 Associated Group: <select name='postgroups' ><option value='$loginuser' selected>$loginuser</option>";
-            foreach($groupsarray as $groupoption) {
+            foreach($usrgrparray as $groupoption) {
                 echo "<option value='$groupoption'>$groupoption</option>";
             }
            
