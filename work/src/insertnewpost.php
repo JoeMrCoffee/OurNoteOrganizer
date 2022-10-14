@@ -13,7 +13,7 @@
 	    $tmpimage = $_FILES['postimage']['tmp_name'];
 	    $todaydate = date("Y-m-d");
 	    
-	    //save file to permenant directory
+	    //save file to permanent directory
 	    if ( $postimage != null ){
 	        $curdir = getcwd();
             $savefile = $curdir."/images/".$postimage;

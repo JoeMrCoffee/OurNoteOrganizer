@@ -15,7 +15,8 @@
             if (isset($_POST['adminstatus'])) { $adminstatus = $_POST['adminstatus']; }
             else { $adminstatus = 'no'; }
             
-            if ($usergroups == "" || $usergroups == null) { $usergroups = $username; }
+            if (str_contains($usergroups, $username)){ }
+            else { $usergroups = "".$usergroups.", ".$username.""; }
         
             $usereditquery = ['$set'=>['username' => $username, "password" => $userpwd, 'groups' => $usergroups, 'adminstatus' => $adminstatus]];
             if ($updateUser = $col->updateOne(['_id' => new MongoDB\BSON\ObjectId("$userid")], $usereditquery)){
@@ -32,11 +33,12 @@
             if (isset($_POST['adminstatus'])) { $adminstatus = $_POST['adminstatus']; }
             else { $adminstatus = 'no'; }
             
-            if ($usergroups == "" || $usergroups == null) { $usergroups = $username; }
+            if (str_contains($usergroups, $username)){ }
+            else { $usergroups = "".$usergroups.", ".$username.""; }
 
             $adduserquery = ['username' => $username, "password" => $userpwd, 'groups' => $usergroups, 'adminstatus' => $adminstatus];
             if ($updateUser = $col->insertOne($adduserquery)){
-                echo "<h3>User created successfully. </h3>";
+                echo "<h3>User created successfully.</h3>";
             }
         }
         else if (isset($_POST['userdel'])){

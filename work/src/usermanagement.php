@@ -3,7 +3,7 @@
     include 'titlebar.php';
 
 
-    if ($validity == "valid" && $adminstatus == "yes") {
+    if ($validity == "valid") {
         $col = $db->users;
         $userlist = $col -> find();
         
@@ -26,9 +26,10 @@
                 </tr></form>";
 
         }
-        
-        echo "<tr><td colspan=3><form method='post' action='useredit.php'>
-            <input type='submit' name='adduser' value='ADD USER'></form></td></tr></table>";
+        if ($adminstatus == "yes"){
+		    echo "<tr><td colspan=3><form method='post' action='useredit.php'>
+		        <input type='submit' name='adduser' value='ADD USER'></form></td></tr></table>";
+        }
     }
     else { echo "Sorry, username and password are unknown. Please try to log in again."; }
 
