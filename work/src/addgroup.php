@@ -9,6 +9,8 @@
 		$usernames = $_POST['users'];
 		$col = $db -> users;
 		
+		echo "<h4>Group created</h4><div class='postlink'>";
+		
 		foreach($usernames as $username){
 			//echo "$username<br>";
 			//get the existing groups
@@ -26,7 +28,7 @@
             }
             else { echo "<p>Sorry there was an error</p>"; }
 		}
-	
+		echo "</div>";
 	}
 	else { echo "Sorry, username and password are unknown. Please try to log in again."; }
 
