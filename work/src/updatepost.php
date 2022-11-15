@@ -39,7 +39,7 @@
 	        $record = $col->find( ['name' => $name, 'postname' => $postname] );  
             foreach ($record as $post) {  
                 echo "<div class='postlink post'>Editor name: ".$post['name'], '<br><br>Postname: ',$post['postname'],'<br><br>
-                    Date: ',$post['date'],'<br><br>Groups: ',$post['groups'],'<br><br>Content:<br>', $post['blog']."</div>";  
+                    Date: ',$post['date'],'<br><br>Groups: ',$post['groups'],'<br><br>Content:<br>', $post['blog']."</div>";
             }
         }
         

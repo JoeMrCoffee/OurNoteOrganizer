@@ -12,8 +12,6 @@
 
 <html>
 <title>OurNoteOrganizer</title>
-
-<!-- css file -->
 <head>
 
 <style>
@@ -30,7 +28,6 @@ body {
     border-spacing: 0;
 }
 
-
 td {
     text-align: left;
     vertical-align: center;
@@ -42,7 +39,6 @@ td {
 td.search {
     text-align: center;
 }
-
 
 table {
     border-spacing: 0;
@@ -89,8 +85,15 @@ button{
     text-align: center;
     box-shadow: 0 0 0;
     border: none;
+    font-family: Sans-serif;
 }
+button:hover { box-shadow: 1px 1px 3px gray; }
 
+.buttontgthr {
+	display: inline-block;
+    margin: 0 20px;
+
+}
 
 input[type=submit]{
     min-width: 50px;
@@ -102,12 +105,15 @@ input[type=submit]{
     text-align: center;
     box-shadow: 0 0 0;
     border: none;
+    font-family: Sans-serif;
 }
 
 input[type=submit].view {
     position: absolute;
     vertical-align: bottom;
     bottom: 3px;
+    font-family: Sans-serif;
+    padding: 5px;
 }
 
 input[type=submit]:hover { box-shadow: 1px 1px 3px gray; }
@@ -115,6 +121,8 @@ input[type=submit]:hover { box-shadow: 1px 1px 3px gray; }
 input[type=submit].search {
     min-width: 70px;
     border-radius: 18px;
+    padding: 5px;
+    font-family: Sans-serif;
 }
 
 input[type=text].search{
@@ -124,6 +132,7 @@ input[type=text].search{
     border-color: gray;
     padding-left: 15px;
     min-height: 30px;
+    font-family: Sans-serif;
 }
 input[type=text].search:hover{
     border-color: #fc034e;
@@ -138,8 +147,8 @@ select {
     text-align: center;
     box-shadow: 0 0 0;
     border: none;
+    font-family: Sans-serif;
 }
-
 
 .title{
     color: white;
@@ -151,7 +160,6 @@ select {
 .title:hover{
      background-image: linear-gradient(#27252E, #3b3b3b);
 }
-
 
 .titlebar {
     position: fixed;
@@ -173,7 +181,6 @@ select {
 .dropdownlink:hover{
      background-image: linear-gradient(#27252E, #3b3b3b);
 }
-.usrname { }
      
 .logoutdropdown {
     display: none;
@@ -228,7 +235,30 @@ select {
    font-size: 22px;
    font-family: Sans-serif;
 }
+.groupmgmt {
+	position: absolute;
+    top: 180px;
+    left: 30%;
+    min-width: 40%;
+    background-color: white;
+    max-height: 500px;
+    overflow: auto;
+    z-index: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    font-family: Sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+	padding: 15px;
+	border: 2px solid #27252E;
+	box-shadow: 0px 0px 5px 0px black;
+}
+.closepopup {
+	position: relative;
+	left: 45%;
+	max-width: 10%;
 
+}
 
 </style>
 <link rel='icon' href='ournoteorganizericon.png'>

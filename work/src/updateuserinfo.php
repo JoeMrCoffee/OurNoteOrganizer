@@ -33,6 +33,8 @@
             if (isset($_POST['adminstatus'])) { $adminstatus = $_POST['adminstatus']; }
             else { $adminstatus = 'no'; }
             
+            if ($usergroups == "") { $usergroups = "".$username.""; }
+            
             if (str_contains($usergroups, $username)){ }
             else { $usergroups = "".$usergroups.", ".$username.""; }
 
