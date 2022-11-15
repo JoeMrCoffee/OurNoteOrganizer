@@ -1,6 +1,6 @@
 # OurNoteOrganizer
 
-OurNoteOrganizer is a web-based note taking tool designed for small teams to use. It is built for non-Cloud, on-prem deployments and is paired with a Docker-Compose file for rapid deployment. 
+OurNoteOrganizer is a web-based note taking tool designed for small teams to use. It is built as a completely private web app for cloud-based or on-prem deployments and is paired with a Docker-Compose file for rapid deployment. 
 
 The project first began as a proof-of-concept for exploring what can be done with PHP and MongoDB. To an extent, it still is a POC, as many features are still being developed or refined. This initial release is as much to gather community feedback as it is to share what could be a useful tool to certain teams. 
 
@@ -69,8 +69,12 @@ Images are uploaded using an HTML POST to PHP which then moves the file from tem
 
 Users and their associated groups can be adjusted in the 'USERS' section. Currently, only users who are labeled as Admins can adjust the user settings including the associated groups for each user, and add or delete users. Users can adjust their own passwords, however using the dropdown under the user name.
 
-
 To create a new group, simply edit a user and add another group. <strong>Each group needs to be separated by a comma.</strong>
+
+<strong>Update - 11/15/22:</strong>
+Users can more easily create new Groups using the 'Add Group' button in the User & Group management page. 
+
+<div align='center'><img src='groupcreation.png' width='500px'></div>
 
 ### Mongo Express
 
