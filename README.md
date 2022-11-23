@@ -39,7 +39,7 @@ OurNoteOrganizer groups notes around the user/author and his/her associated grou
 
 The initial home page displays all notes available to the user; both his/her notes or notes where he/she is a group member. The posts are displayed as small squares with their assigned colors. Clicking 'VIEW' on any note allows for viewing the full note or article. 
 
-The search bar at the top allows searching through the notes by associated group and post name.
+The search bar at the top allows searching through the notes by associated group and post name. Search is a Regex search, so complete and partial matches will be returned.
 
 <div align='center'><img src='OurNoteOrganizer-newpost.png' width='500px'></div>
 
@@ -57,7 +57,7 @@ Each post or note can have an associated image included. All images appear in th
 
 Images are uploaded using an HTML POST to PHP which then moves the file from temporary storage to a permanent location in the 'images' directory. There are a couple of potential issues that could cause the file upload to fail. 
 
-1. The directory permisions of the 'image' directory is not the correct permision level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown apache:apache images' for Debian/Ubuntu derivatives or 'chown httpd:httpd images' for RedHat derivatives. Per the Docker containers provided, running a volume passtrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what has worked is running 'chmod 777 images' to allow write and execute access to the container. For production environments I recommend changing the permissions of the 'images' folder inside the container
+1. The directory permissions of the 'image' directory is not the correct permission level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown www-data:www-data images' for RedHat derivatives. Per the Docker containers provided, running a volume passthrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what has worked is running 'chmod 777 images' to allow write and execute access to the container. For production environments I recommend changing the permissions of the 'images' folder inside the container
     Run 'sudo docker exec -it web4mongo bash' <-- if you change the service name in the docker-compose remember to use the name of your container.
     Run 'chown -R www-data:www-data images/' <-- this will be run inside the container. By default the container opens with root (root for the container)
     privilges. 
