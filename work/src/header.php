@@ -91,7 +91,7 @@ button:hover { box-shadow: 1px 1px 3px gray; }
 
 .buttontgthr {
 	display: inline-block;
-    margin: 0 20px;
+    margin-right: 20px;
 
 }
 

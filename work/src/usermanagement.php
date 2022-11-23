@@ -28,14 +28,14 @@
             else { echo "</td><td></td><td></td></tr></form>"; }
 
         }
-        echo "<tr><td><button onclick='addgroupform()'>ADD GROUP</button></td>";
+        echo "</table><br><div><button onclick='addgroupform()' class='buttontgthr'>ADD GROUP</button>";
         if ($adminstatus == "yes"){
-		    echo "<td><form method='post' action='useredit.php'>
-		        <input type='submit' name='adduser' value='ADD USER'></form></td>";
+		    echo "<form method='post' action='useredit.php' class='buttontgthr'>
+		        <input type='submit' name='adduser' value='ADD USER' class='buttontgthr'></form>";
         }
-        echo "<td></td></tr></table>";
+        echo "</div>";
         
-        //Group management popup
+        //Group management pop-up
         echo "<div class='groupmgmt' style='visibility: hidden;' id='groupEdit'><form method='post' action='addgroup.php'>
         		<p><strong>Group name: </strong>&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='groupname'>
         		<img class='closepopup' onclick='addgroupform()' src='close.png'></p>
@@ -53,7 +53,7 @@
 
 
 ?>
-</table>
+
 </td></tr></table>
 </body>
 <script>
