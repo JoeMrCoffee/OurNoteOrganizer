@@ -31,7 +31,7 @@
         echo "</table><br><div><button onclick='addgroupform()' class='buttontgthr'>ADD GROUP</button>";
         if ($adminstatus == "yes"){
 		    echo "<form method='post' action='useredit.php' class='buttontgthr'>
-		        <input type='submit' name='adduser' value='ADD USER' class='buttontgthr'></form>";
+		        <input type='submit' name='adduser' value='ADD USER'></form>";
         }
         echo "</div>";
         
