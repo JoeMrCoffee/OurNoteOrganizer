@@ -254,8 +254,9 @@ select {
 	box-shadow: 0px 0px 5px 0px black;
 }
 .closepopup {
-	position: relative;
-	left: 45%;
+	position: absolute;
+	top: 6%
+	right: 5%;
 	max-width: 10%;
 
 }
