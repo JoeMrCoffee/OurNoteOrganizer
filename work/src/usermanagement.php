@@ -36,10 +36,10 @@
         echo "</div>";
         
         //Group management pop-up
-        echo "<div class='groupmgmt' style='visibility: hidden;' id='groupEdit'><form method='post' action='addgroup.php'>
-        		<p><strong>Group name: </strong>&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='groupname'>
-        		<img class='closepopup' onclick='addgroupform()' src='close.png'></p>
-        		<p><strong>Select users:</strong></p>";
+        echo "<div class='groupmgmt' style='visibility: hidden;' id='groupEdit'><img class='closepopup' onclick='addgroupform()' src='close.png'>
+		<form method='post' action='addgroup.php'>
+        	<p><strong>Group name: </strong>&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='groupname'></p>
+        	<p><strong>Select users:</strong></p>";
 		$col2 = $db->users;
 		$userlist2 = $col2 -> find();
 		foreach ($userlist2 as $userinfo2) {
