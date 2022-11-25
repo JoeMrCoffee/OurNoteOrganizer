@@ -4,7 +4,7 @@
 
     if ($validity == "valid") {
         
-        echo "<div class='postlink post'><h4>Help</h4>
+        echo "<h4>Help</h4><div class='postlink post'>
  <p>OurNoteOrganizer is a web-based note taking tool designed for small teams to use. It is built for non-Cloud, on-prem deployments and is paired with a Docker-Compose file for rapid deployment.</p>
  <p>The project first began as a proof-of-concept for exploring what can be done with PHP and MongoDB. To an extent, it still is a POC, as many features are still being developed or refined. This initial release is as much to gather community feedback as it is to share what could be a useful tool to certain teams.</p>
 
