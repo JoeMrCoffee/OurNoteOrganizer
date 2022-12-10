@@ -8,7 +8,7 @@
         
         echo "<h4>Manage users</h4>
             <table width='100%' class='postlink' align='center'>
-            <tr><th>Username</th><th>Member groups</th><th width='120px'>Admin?</th>";
+            <tr><th>Username</th><th width='60%'>Member groups</th><th width='120px'>Admin?</th>";
             
         if($adminstatus == "yes"){ echo "<th width='120px'>Edit</th><th></th></tr>"; }
 		else { "<th width='120px'></th><th></th></tr>"; }
@@ -18,7 +18,7 @@
             $usergroups = $userinfo['groups'];
             echo "<form method='post' action='useredit.php'><tr>
                 <td width='150px'>".$userinfo['username']."<input type='hidden' name='username' value='".$userinfo['username']."'></td>
-                <td width='300px'>$usergroups<input type='hidden' name='usergroups' value='$usergroups'></td>
+                <td>$usergroups<input type='hidden' name='usergroups' value='$usergroups'></td>
                 <input type='hidden' name='password' value='".$userinfo['password']."'>
                 <td>";
             if (isset($userinfo['adminstatus']) && $userinfo['adminstatus'] == "yes") { echo "<img src='checkmark.png'>"; }
