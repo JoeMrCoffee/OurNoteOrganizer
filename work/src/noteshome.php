@@ -29,7 +29,9 @@
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearch]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchlow]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchup]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearch]]
+	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearch]],
+		    ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchup]],
+	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]]
                 ]]);    
 	    }
 	     
