@@ -30,14 +30,14 @@
             <td width='150px' class='title'><a href='newpost.php' class='titlelink'>NEW POST</a></td>
             <td width='250px' class='title'><a href='usermanagement.php' class='titlelink'>USERS & GROUPS</a></td>"; 
     
-    echo "<td></td><td></td><td></td><td></td><td></td>
+    echo "<td></td><td></td><td></td><td></td>
             <td width='250px' class='title usrname'>Welcome: $loginuser
             <div class='logoutdropdown'>
             <a href='changepwd.php' class='titlelink dropdownlink'>CHANGE PASSWORD</a><br>
             ----------------------------<br>
             <a href='index.php' class='titlelink dropdownlink'>LOG OUT</a>
             </div></td>
-            <td><a href='help.php'><img src='questionmark.png' alt='Help' title='Help'></a></td>
+            <td><a href='help.php'><img src='questionmark.png' alt='Help' title='Help'></a></td><td></td>
         </tr></table>
         <table class='bodypadding' width='80%' align='center' border='0' cellpadding='0'>
         <tr><td colspan='4'>";
