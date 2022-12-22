@@ -13,7 +13,7 @@
 <p align='center'><iframe width='560' height='315' src='https://www.youtube.com/embed/nJEJ58qsWiU' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p>
 
 <h4>Basic use and organization</h4>
-<p>OurNoteOrganizer groups notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign. Once multiple users are part of the same group all users are able to view and jointly edit / update the notes.</p>
+<p>OurNoteOrganizer groups notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign.  Once multiple users are part of the same group all users are able add comments to the note, but only the author can edit or change the note content.</p>
 
 <p>The initial home page displays all notes available to the user; both his/her notes or notes where he/she is a group member. The posts are displayed as small squares with their assigned colors. Unless searched for all the notes are listed in reverse chronological order (newest first) based on latest modification to the post. Clicking 'VIEW' on any note allows for viewing the full note or article.</p>
 
