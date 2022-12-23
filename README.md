@@ -35,7 +35,7 @@ Currently the login credentials are separated in mongologin.ini which gets read 
 
 <div align='center'><img src='ournoteorganizer.png' width='500px'></div>
 
-OurNoteOrganizer groups notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign. Once multiple users are part of the same group all users are able to view and jointly edit / update the notes. 
+OurNoteOrganizer group notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign. Once multiple users are part of the same group all users are able to comment on the note, while the author can edit and update.
 
 The initial home page displays all notes available to the user; both his/her notes or notes where he/she is a group member. The posts are displayed as small squares with their assigned colors. Clicking 'VIEW' on any note allows for viewing the full note or article. 
 
