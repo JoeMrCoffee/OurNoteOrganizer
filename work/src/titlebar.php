@@ -13,11 +13,13 @@
     
     $validity = "";
     $userscol = $db->users;
-    $chkvaliduser = $userscol->find(['username' => $loginuser, 'password' => $loginpassword]);
+    $chkvaliduser = $userscol->find(['username' => $loginuser]);
     
     foreach ($chkvaliduser as $usrrslt) {  
-        if ($usrrslt['username'] == $loginuser && $usrrslt['password'] == $loginpassword){
+        if ($usrrslt['password'] == $loginpassword || password_verify($loginpassword, $usrrslt['password'])){
             $validity = "valid";
+            $loginuserid = $usrrslt['_id'];
+            $loginusergroups = $usrrslt['groups'];
             if(isset($usrrslt['adminstatus'])){ $adminstatus = $usrrslt['adminstatus']; }
             else { $adminstatus = "no"; }
         }
