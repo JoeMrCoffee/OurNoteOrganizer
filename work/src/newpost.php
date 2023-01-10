@@ -105,14 +105,14 @@
                 <div class='postlink post'>
                 <form method='post' action='insertnewpost.php' enctype='multipart/form-data'>
                 <h4>Name: $loginuser<input type='hidden' name='name' value='$loginuser'><br><br>
-                Note title: <input type='text' name='postname'><br><br></h4>
+                Note title: <input type='text' name='postname'><br><br>
                 Associated Group: <select name='postgroups' ><option value='$loginuser' selected>$loginuser</option>";
             foreach($usrgrparray as $groupoption) {
                 echo "<option value='$groupoption'>$groupoption</option>";
             }
            
             echo "</select><p>
-                Note highlight color: <input type='color' name='postcolor' value='#ffffff'><br><br>
+                Note highlight color: <input type='color' name='postcolor' value='#ffffff'><br><br></h4>
                 Insert image with post? <input type='file' name='postimage'><br><br>
                 Note post: </p><textarea class='giantinput' id='notepost' type='text' name='notecontent'></textarea><br><br>
                 <input type='submit' name='Enter' value='SUBMIT'></form>

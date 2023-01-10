@@ -30,7 +30,7 @@
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchlow]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchup]],
 	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearch]],
-		    ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchup]],
+	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchup]],
 	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]]
                 ]]);    
 	    }
@@ -82,8 +82,7 @@
                     <input type='hidden' name='postname' value='$postname'>
                     <input type='hidden' name='postcolor' value='$postcolor'>
                     <input type='hidden' name='postid' value='$postid'>
-                    <input type='submit' value='VIEW' class='view'></div></form></td>";
-            
+                    <input type='submit' value='VIEW' class='view'></div></form></td>";           
                 $item++;
             
             }
@@ -105,6 +104,33 @@
             }
         }
         echo "</tr>";
+        
+        //Capture tasks for the upcoming tasks alert
+        $col2 = $db->tasks;
+        $tasklist = $col2 -> find(['taskowner' => $loginuser]);
+        $duetaskcount = 0; //this is to help trigger the javascript to show the popup
+        $todaysdate = time();
+
+        echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
+        		<img class='closepopup' onclick='tasksdue()' src='close.png'>
+        		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong>";
+    		foreach ($tasklist as $taskitem) {
+    			$taskdate = strtotime($taskitem['duedate']);
+    			$difference = abs($taskdate - $todaysdate);
+    			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
+    				echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
+    				$duetaskcount++;
+    			}
+    		}
+    		echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
+    			<input type='hidden' id='taskcount' value='$duetaskcount'></div>";
+		if ($_SESSION['popupseen'] == "alreadyshown"){
+			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
+		}
+		else { 
+			$_SESSION['popupseen'] = "notyet"; 
+			echo "<input type='hidden' id='alreadyshown' value='notyet'>";
+		}
     }
     else { echo "<br><br>Sorry, username and password are unknown. Please try to log in again."; }
 
@@ -112,7 +138,20 @@
 </table>
 </td></tr></table>
 </body>
+<script>
+	function tasksdue() {
+		var taskcount = document.getElementById('taskcount').value;
+		var tasksduepopup = document.getElementById('dueTask');
+		var alreadyshown = document.getElementById('alreadyshown').value;
+		console.log(taskcount+" "+alreadyshown);
+		if (taskcount > 0 && alreadyshown == 'notyet') {
+			if (tasksduepopup.style.visibility == 'hidden') {
+					tasksduepopup.style.visibility = 'visible';
+	 		} 
+	 		else { tasksduepopup.style.visibility = 'hidden'; }
+ 		}
+	}
+	window.onload = tasksdue();
 
-
-
+</script>
 </html>
