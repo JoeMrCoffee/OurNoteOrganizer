@@ -124,7 +124,7 @@
 	}
 	echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
 		<input type='hidden' id='taskcount' value='$duetaskcount'>";
-	if ($_SESSION['popupseen'] == "alreadyshown"){
+	if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
 		echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
 	}
 	else { 
