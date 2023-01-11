@@ -112,25 +112,26 @@
         $todaysdate = time();
 
         echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
-        		<img class='closepopup' onclick='tasksdue()' src='close.png'>
-        		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong>";
-    		foreach ($tasklist as $taskitem) {
-    			$taskdate = strtotime($taskitem['duedate']);
-    			$difference = abs($taskdate - $todaysdate);
-    			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
-    				echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
-    				$duetaskcount++;
-    			}
-    		}
-    		echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
-    			<input type='hidden' id='taskcount' value='$duetaskcount'></div>";
-		if ($_SESSION['popupseen'] == "alreadyshown"){
-			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
+		<img class='closepopup' onclick='tasksdue()' src='close.png'>
+		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong>";
+	foreach ($tasklist as $taskitem) {
+		$taskdate = strtotime($taskitem['duedate']);
+		$difference = abs($taskdate - $todaysdate);
+		if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
+			echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
+			$duetaskcount++;
 		}
-		else { 
-			$_SESSION['popupseen'] = "notyet"; 
-			echo "<input type='hidden' id='alreadyshown' value='notyet'>";
-		}
+	}
+	echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
+		<input type='hidden' id='taskcount' value='$duetaskcount'>";
+	if ($_SESSION['popupseen'] == "alreadyshown"){
+		echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
+	}
+	else { 
+		$_SESSION['popupseen'] = "notyet"; 
+		echo "<input type='hidden' id='alreadyshown' value='notyet'>";
+	}
+	echo "</div>";
     }
     else { echo "<br><br>Sorry, username and password are unknown. Please try to log in again."; }
 
