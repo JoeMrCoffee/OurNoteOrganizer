@@ -255,7 +255,7 @@ select {
 }
 .closepopup {
 	position: absolute;
-	top: 6%
+	top: 6%;
 	right: 5%;
 	max-width: 10%;
 
