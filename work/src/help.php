@@ -10,7 +10,7 @@
 
 <h4>Run through:</h4>
 
-<p align='center'><iframe width='560' height='315' src='https://www.youtube.com/embed/nJEJ58qsWiU' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p>
+<p align='center'><iframe width='640' height='360' src='https://www.youtube.com/embed/nJEJ58qsWiU' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p>
 
 <h4>Basic use and organization</h4>
 <p>OurNoteOrganizer groups notes around the user/author and his/her associated groups or teams. All notes written are privy to the author and any associated groups he/she wishes to assign.  Once multiple users are part of the same group all users are able add comments to the note, but only the author can edit or change the note content.</p>
@@ -22,6 +22,12 @@
 <p>New posts can be created simply by clicking the 'NEW POST' link on the top title bar. The author is bound to the logged in user. Post name, image, and highlight color can be defined, the associate group can be selected, and note content can be added.</p>
 
 <p>To edit or update posts, authors of the post can click 'VIEW' and then 'EDIT POST'. If a color or image has been defined with the post a preview of each will be shown. When editing a post the original Author is kept as the source editor/author of the post regardless of who in the team is editing. This behavior may need to be adjusted in the future, but for now it is kept simple. Other users in the same group can read and create comments for each post.</p>
+
+<h4>Workflows and Tasks</h4>
+
+<p align='center'><iframe width='640' height='360' src='https://www.youtube.com/embed/bE97AMFL5SY' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe></p>
+
+<p>Tasks can be added to posts and assigned to users within the group that the post belongs to. This allows others to collaborate more actively because the tasks can be tracked, and if a task or tasks are do within 7 days a notification will show for the user on first login. </p4>
 
 <h4>User and group management</h4>
 
