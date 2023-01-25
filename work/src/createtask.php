@@ -30,6 +30,8 @@
         $insertcomment = ['author' => $loginuser, 'comment' => $taskcomment, 'postname' => $postname, 'postid' => $postid];
         if ($postcomment = $col2->insertOne($insertcomment)){
                 echo "<h3>Comment added to $postname. </h3>";
+                echo "<form method='post' action='viewpost.php'><input type='hidden' value='$postid' name='postid'>
+                		<input type='submit' value='< BACK'></form>";
         }
         else { echo "<h3>Error occured while copying to the comments section. Please contact your IT administrator.</h3>"; }
         

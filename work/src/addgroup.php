@@ -26,9 +26,11 @@
 			if ($updateUser = $col->updateOne(['username' => $username], $updategroupqry)){
                 echo "<p>$username added to group $groupname.</p>";
             }
+            
             else { echo "<p>Sorry there was an error</p>"; }
 		}
 		echo "</div>";
+		echo "<br><a href='usermanagement.php'><button>< BACK</button></a>";
 	}
 	else { echo "Sorry, username and password are unknown. Please try to log in again."; }
 

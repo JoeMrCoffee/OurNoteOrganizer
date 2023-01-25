@@ -18,6 +18,8 @@
         $insertcomment = ['author' => $author, 'comment' => $comment, 'postname' => $postname, 'postid' => $postid];
         if ($postcomment = $col->insertOne($insertcomment)){
                 echo "<h3>Comment added to $postname. </h3>";
+                echo "<form method='post' action='viewpost.php'><input type='hidden' value='$postid' name='postid'>
+                		<input type='submit' value='< BACK'></form>";
         }
         else { echo "<h3>Error occured while adding that comment. Please contact your IT administrator.</h3>"; }
 
