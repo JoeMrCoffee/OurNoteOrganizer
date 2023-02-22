@@ -12,9 +12,9 @@
         		$upttaskid = $_POST['taskid']; 
         		$upttask = ['$set'=>['taskstatus' => $upttaskstatus]];
         		if ( $updateTask = $col->updateOne(['_id' => new MongoDB\BSON\ObjectId("$upttaskid")], $upttask) ) {
-        			echo "<h4>Task update successful</h4>";
+        			echo "<h3>Success</h3><p class='postlink'><br>Task updated successfully.<br><br></p>";
         		}
-        		else {  echo "<h4>Sorry an error occured, please contact your admin. </h4>"; }
+        		else {  echo "<h3>Sorry an error occurred, please contact your admin. </h3>"; }
         		echo "<a href='mytasks.php'><button>< BACK</button></a>";
         		
         }

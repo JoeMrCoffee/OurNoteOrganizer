@@ -26,7 +26,7 @@
                 else if ($username != $loginuser && $userpwd == $loginpassword) {
                     $_SESSION['username'] = $username;     
                 }
-                echo "<h3>User info updated successfully. </h3>
+                echo "<h3>Success</h3><p class='postlink'><br>$username's info updated successfully<br><br></p>
                 		<br><a href='noteshome.php'><button>< HOME</button></a>";
             }      
         }
@@ -45,7 +45,7 @@
 
             $adduserquery = ['username' => $username, "password" => $hashpwd, 'groups' => $usergroups, 'adminstatus' => $adminstatus];
             if ($updateUser = $col->insertOne($adduserquery)){
-                echo "<h3>User created successfully.</h3>
+                echo "<h3>Success</h3><p class='postlink'><br>$username's created successfully<br><br></p>
                 		<br><a href='usermanagement.php'><button>< BACK</button></a>";
             }
         }

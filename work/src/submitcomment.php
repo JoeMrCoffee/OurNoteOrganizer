@@ -17,7 +17,7 @@
 		
         $insertcomment = ['author' => $author, 'comment' => $comment, 'postname' => $postname, 'postid' => $postid];
         if ($postcomment = $col->insertOne($insertcomment)){
-                echo "<h3>Comment added to $postname. </h3>";
+                echo "<h3>Success</h3><p class='postlink'><br>Comment added to $postname. <br><br></p>";
                 echo "<form method='post' action='viewpost.php'><input type='hidden' value='$postid' name='postid'>
                 		<input type='submit' value='< BACK'></form>";
         }
