@@ -26,7 +26,7 @@
             echo "</h4><div class='postlink'>";
             if ( isset($post['postimage']) && $post['postimage'] != null && $post['postimage'] != "none") { 
                 $postimage = $post['postimage'];
-                echo "<p style='text-align: center;'><img src='$postimage' style='max-width: 650px;'></p>"; 
+                echo "<p style='text-align: center;'><img src='$postimage' style='max-width: 650px; max-height: 600px;'></p>"; 
             }
             else { $postimage = "none"; }
 
