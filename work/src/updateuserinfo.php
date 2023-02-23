@@ -9,7 +9,12 @@
         if (isset($_POST['updateuser'])){
             $username = $_POST['username'];
             $userpwd = $_POST['userpassword'];
-            $hashpwd = password_hash($userpwd, PASSWORD_DEFAULT);
+            //check and hash the password if reset
+            $hashcheck = password_get_info($userpwd);
+            if ($hashcheck['algoName'] === 'unknown'){
+            	$hashpwd = password_hash($userpwd, PASSWORD_DEFAULT);
+        	} else { $hashpwd = $userpwd; }
+            
             $usergroups = $_POST['usergroups'];
             $userid = $_POST['userid'];
             if (isset($_POST['adminstatus'])) { $adminstatus = $_POST['adminstatus']; }
