@@ -14,7 +14,7 @@
 	        $groupsarray = explode(",", $usergroups);
 	    }
         
-        
+        //This is the search function for the page
 	    if(isset($_POST['notesearch'])){ 
 	        $notesearch = $_POST['notesearch'];
 	        //handling case insensitive searches
@@ -34,7 +34,7 @@
 	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]]
                 ]]);    
 	    }
-	     
+	    //This returns all values if the search bar is not used or has yet to be used
 	    else { $record = $col->find(['$or'=>[
 	        ['name' => $loginuser],
 	        ['groups' => ['$in' => $groupsarray]]
@@ -58,14 +58,22 @@
             $postimage = "";
             if(isset($note['postimage'])){ $postimage = $note['postimage']; }
             
+            $redflag = "<a style="; //An exception when the post has a link auto copited in from Google Docs
+            $redflag2 = "<img src="; // An exception for when images are posted in the note body
             //still working on getting the formatting right for this
             $content = $note['blog'];
             if (strlen($content) >= 200 && $postimage == ""){
+            	//handle posts with just a link exception
+            	if (strpos($content, $redflag) != false && strpos($content, $redflag) <= 200) { $content = "<p>Hyperlink in body. Click View to see details.<p>"; } 
+            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.<p>"; } 
                 $content = substr($content,0,200)." ...<br>";
                 $content = str_replace("< ", "", $content); //replace a bad cut if a <p> or <li> gets cut
                 $content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
             }
             elseif (strlen($content) >= 100 && $postimage != ""){
+            	//handle posts with just a link exception
+            	if (strpos($content, $redflag) != false && strpos($content, $redflag) <= 100) { $content = "<p>Hyperlink in body. Click View to see details.</p>"; }
+            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.<p>"; } 
                 $content = substr($content,0,100)." ...<br>";
                 $content = str_replace("< ", "", $content); //replace a bad cut if a <p> or <li> gets cut
                 $content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
