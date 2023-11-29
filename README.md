@@ -81,7 +81,7 @@ Users can more easily create new Groups using the 'Add Group' button in the User
 <div align='center'><img src='OurNoteOrganizer-mytasks.png' width='500px'></div>
 
 New update as of 01/10/2023. 
-Task management allows for group members to assign tasks to any post / note to other members of the same group. Tasks can be viewed for the user themselves or at the bottom of the post inthe comments section. 
+Task management allows for group members to assign tasks to any post / note to other members of the same group. Tasks can be viewed for the user themselves or at the bottom of the post in the comments section. 
 
 Clicking 'MY TASKS' will show a full list of tasks assigned to the login user. There is also a notification built into the HOME screen. The alert logic is to list all tasks upcoming within 7 days, with a prompt to view them in the 'MY TASKS' section. The alert appears each time on first login or page load of the 'HOME' screen. To clear the notification, simply visit the 'MY TASKS' page and a cookie/ SESSION variable will be set to stop the popup until logout and next login. 
 <div align='center'><img src='OurNoteOrganizer-taskalert.png' width='500px'></div>
