@@ -13,6 +13,7 @@
         $postid = $_POST['postid'];
 		//clean the bad apostrophes 
 		$comment = str_replace("'", "&apos;", $comment);
+		$comment = nl2br($comment);
 		$postname = str_replace("'", "&apos;", $postname);
 		
         $insertcomment = ['author' => $author, 'comment' => $comment, 'postname' => $postname, 'postid' => $postid];

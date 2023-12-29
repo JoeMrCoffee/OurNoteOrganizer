@@ -5,16 +5,17 @@
     if ($validity == "valid") {
         $col = $db -> posts;
         //get post info
-	    $name = $_POST['name'];
-	    $postname = $_POST['postname'];
-	    $note = $_POST['notecontent'];
-	    $postid = $_POST['postid'];
-	    $postcolor = $_POST['postcolor'];
-	    $todaydate = date("Y-m-d");
-	    $postgroups = $_POST['postgroups'];
+	$name = $_POST['name'];
+	$postname = $_POST['postname'];
+	$note = $_POST['notecontent'];
+	$postid = $_POST['postid'];
+	$postcolor = $_POST['postcolor'];
+	$todaydate = date("Y-m-d");
+	$postgroups = $_POST['postgroups'];
 
         $note = str_replace("'", "&apos;", $note);
-		$postname = str_replace("'", "&apos;", $postname);
+        $note = nl2br($note);
+	$postname = str_replace("'", "&apos;", $postname);
 	    //Update or Edit the original post
 	    if (isset($_POST['Edit'])){
 	        //save file to permanent directory

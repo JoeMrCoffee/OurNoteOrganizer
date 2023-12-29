@@ -10,13 +10,14 @@
         $duedate = $_POST['duedate'];
         $postname = $_POST['postname'];
         $comment = $_POST['commentcontent'];
+        $comment = nl2br($comment);
         
         if ($duedate == null) { $duedate = "undefined"; } 
         
        
         //clean the bad apostrophes 
-	$postname = str_replace("'", "&apos;", $postname);
-	$comment = str_replace("'", "&apos;", $comment);
+		$postname = str_replace("'", "&apos;", $postname);
+		$comment = str_replace("'", "&apos;", $comment);
         $taskcomment = "<h4>Task assigned to: $taskowner</h4>".$comment; //concatenate the owner and comment
        
         $task = ['taskowner' => $taskowner, 'duedate' => $duedate, 'postname' => $postname, 'postid' => $postid, 'taskstatus' => 'Open', 'taskcomment' => $comment];
