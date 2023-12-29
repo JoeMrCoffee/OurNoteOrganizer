@@ -96,6 +96,7 @@ I have found that the Mongo Express container can often fail to start if the Mon
 
 ### A word on TinyMCE
 
+
 TinyMCE is an external text editor which is used to help enhance the ease for writing and editing posts. It is an external tool that requires connectivity to external networks in order to function. For environments that do not have external Internet connectivity a standard textarea that does not offer rich formatting is employed. 
 
 As this project is made to be hosted on any on-prem environment, there is no TinyMCE API key provided or registered. Users can create their own keys based on their domains and needs. To remove the notification about getting started, users can follow the quick steps, create their own API key, and add it to line 8 of the newpost.php file.
@@ -103,8 +104,15 @@ As this project is made to be hosted on any on-prem environment, there is no Tin
 More information on TinyMCE and getting started: 
 
 https://www.tiny.cloud/
-
 https://www.tiny.cloud/docs/quick-start/
+
+#### Update on TinyMCE
+I commented out support for TinyMCE now for 2 reasons. One they are changing their policy around the API use and need to have a registered key and account with them to use it - before there was just an error. 
+Second, TinyMCE and the way I shorten content for the Noteshome page has a lot of edge cases that are hard to deal with. I would often upload a link or an image in the TinyMCE interface, then the overview page, noteshome would break because I crop to a max of 200 characters. If there is nested HTML in the TinyMCE input (and there always is) then occasionally all my work arounds to avoid breaking the home page don't work. 
+
+Now we are just using a text input with nl2br handlers so any paragraph breaks can be preserved. Not as feature rich, but cleaner and faster to run (no external API to load).
+
+To re-enable TinyMCE, uncomment the <script> portion of the newnote.php file. It should all work the same.
 
 ### SSL - Be Careful and Be Safe
 
