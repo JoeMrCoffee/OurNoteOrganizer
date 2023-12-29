@@ -20,18 +20,22 @@
 	        //handling case insensitive searches
 	        $notesearchlow = strtolower($notesearch); //lowercase all the values
 	        $notesearchup = ucwords($notesearch); //make the first letter an upper case
+	        $notesearchupper = strtoupper($notesearch); //uppercase the whole search
 	        
 	        //Search against the same user name or group name
 	        $record = $col->find(['$or'=>[
 	            ['name'=> $loginuser, 'postname'=> ['$regex'=>$notesearch]],
 	            ['name'=> $loginuser, 'postname'=> ['$regex'=>$notesearchlow]],
 	            ['name'=> $loginuser, 'postname'=> ['$regex'=>$notesearchup]],
+	            ['name'=> $loginuser, 'postname'=> ['$regex'=>$notesearchupper]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearch]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchlow]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchup]],
+	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchupper]],
 	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearch]],
 	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchup]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]]
+	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]],
+	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchupper]]
                 ]]);    
 	    }
 	    //This returns all values if the search bar is not used or has yet to be used
