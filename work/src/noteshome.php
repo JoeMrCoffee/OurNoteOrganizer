@@ -89,7 +89,7 @@
                     <div class='postlink overview' style='background-color: $postcolor;'><strong>Author: $name <br>Note: $postname</strong>
                     <br><strong>$postdate</strong>";
                 if($postimage != "none" && $postimage != null){ echo "<br><div style='text-align: center;'><img src='$postimage' style='max-height: 80px;'></div>"; }
-                echo "$content<br>
+                echo "<br>$content<br>
                     <input type='hidden' name='name' value='$name'>
                     <input type='hidden' name='postname' value='$postname'>
                     <input type='hidden' name='postcolor' value='$postcolor'>
