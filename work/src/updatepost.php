@@ -37,7 +37,8 @@
 	        $updatePost = $col->updateOne(['_id' => new MongoDB\BSON\ObjectId("$postid")], $editimgquery);
 	        echo "<h3>Post updated successfully: </h3>";
 	        
-	        $record = $col->find( ['name' => $name, 'postname' => $postname] );  
+	        $record = $col->find( ['_id' => new MongoDB\BSON\ObjectId("$postid")] );  
+		//Update this previous line to use unique ID not username and post name.
             foreach ($record as $post) {  
                 echo "<div class='postlink post'>Editor name: ".$post['name'], '<br><br>Postname: ',$post['postname'],'<br><br>
                     Date: ',$post['date'],'<br><br>Groups: ',$post['groups'],'<br><br>Content:<br>', $post['blog']."</div>";
