@@ -34,7 +34,8 @@
 	    echo "<h3>Post inserted successfully: </h3>";
 	    
 	    
-	    $record = $col->find( [ 'name' => $name, 'postname' => $postname] );  
+	    $record = $col->find( [ 'name' => $name, 'postname' => $postname, 'date' => $todaydate, "blog" => $note] );  
+	    //Making this previous find a bit more specific.
         foreach ($record as $post) {  
             echo "<div class='postlink post'>Original author: ".$post['name'], '<br><br>Postname: ',$post['postname'],'<br><br>Groups: ',$post['groups'],'
             <br><br>Date: ',$post['date'],'<br><br>Content:<br>', $post['blog']."</div>";  
