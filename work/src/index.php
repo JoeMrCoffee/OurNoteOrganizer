@@ -30,7 +30,7 @@
 <table align='center'>
 <tr><td>Username: </td><td><input type='text' name='username' style='min-height: 22px;'></td></tr><br>
 <tr><td>Password: </td><td><input type='password' name='password' style='min-height: 22px;'></td></tr><br>
-<tr ><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<tr ><td></td><td class='login'>
 <input type='submit' value='LOG IN'></td></tr></table>
 </form></h4>
 

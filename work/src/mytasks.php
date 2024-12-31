@@ -28,13 +28,18 @@
             
              $taskstatus = $taskitem['taskstatus'];
             echo "<td><form id='statusupdate' method='post' action='updatetask.php'>
-                		<input type='hidden' name='taskid' value='".$taskitem['_id']."'>
-                		<select onchange='this.form.submit()' name='taskstatus'>
-                			<option value='$taskstatus' selected>$taskstatus</option>";
+                		<input type='hidden' name='taskid' value='".$taskitem['_id']."'>";
+             //Change the selection and color of the items based on status
             if ($taskstatus == "Open" || $taskstatus == "open") {
-            		echo "<option value='Closed'>Closed</option>";
-            } 
-            else { echo "<option value='Open'>Open</option>"; }
+            	echo "<select onchange='this.form.submit()' name='taskstatus'>
+                	<option value='$taskstatus' selected>$taskstatus</option>
+                	<option value='Closed'>Closed</option>";
+            }
+            else { 
+            	echo "<select onchange='this.form.submit()' name='taskstatus' style='background-color: #25B25D;'>
+                	<option value='$taskstatus' selected>$taskstatus</option>
+                	<option value='Open'>Open</option>"; 
+        	}
             echo "</select></form></td><td></td><td></td><tr>";
 
         }

@@ -39,6 +39,9 @@ td {
 td.search {
     text-align: center;
 }
+td.login {
+	text-align: right;
+}
 
 table {
     border-spacing: 0;
@@ -59,10 +62,14 @@ div {
 }
 div.overview {
     word-wrap: break-word;
-    position: relative;
+    /* position: relative; */
+    vertical-align: middle;
     max-width: 350px;
     min-height: 220px;
     max-height: 310px;
+    min-width: 270px;
+    display: inline-block;
+    margin: 10px;
 
 }
 div.overview:hover { box-shadow: 1px 1px 3px gray; }
@@ -112,6 +119,7 @@ input[type=submit].view {
     position: absolute;
     vertical-align: bottom;
     bottom: 3px;
+    right: 3px;
     font-family: Sans-serif;
     padding: 5px;
 }
@@ -123,6 +131,15 @@ input[type=submit].search {
     border-radius: 18px;
     padding: 5px;
     font-family: Sans-serif;
+}
+
+input[type=text] {
+	min-width: 250px;
+
+}
+input[type=password] {
+	min-width: 250px;
+
 }
 
 input[type=text].search{
@@ -137,6 +154,11 @@ input[type=text].search{
 input[type=text].search:hover{
     border-color: #fc034e;
 }
+div.search {
+	display: block;
+	text-align: center;
+}
+
 select {
     min-width: 50px;
     background-color: #fc034e;
@@ -225,6 +247,7 @@ select {
 	padding: 5px;
 	background-color: white;
 	border: 2px solid #27252E;
+	position: relative; /*This is needed for the absolute items to align*/
 	
 }
 

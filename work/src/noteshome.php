@@ -44,15 +44,14 @@
 	        ['groups' => ['$in' => $groupsarray]]
 	        ]], ['sort' => ['date'=> -1]]); }
 
-	    $item=0;
+
 
         //Search bar
-        echo "<tr><td class='search' colspan='4'>
+        echo "<div class='search'>
         <form method='post' action='".$_SERVER['PHP_SELF']."'>    
         <input name='notesearch' type='text' class='search' placeholder='Search by group or post name'>  
         <input class='search' type='submit' value='SEARCH' ></form>
-        </td></tr>
-        <tr>";
+        </div>";
         foreach ($record as $note) {
             $name=$note['name'];
             $postname=$note['postname'];
@@ -68,54 +67,34 @@
             $content = $note['blog'];
             if (strlen($content) >= 200 && $postimage == ""){
             	//handle posts with just a link exception
-            	if (strpos($content, $redflag) != false && strpos($content, $redflag) <= 200) { $content = "<p>Hyperlink in body. Click View to see details.<p>"; } 
-            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.<p>"; } 
+            	if (strpos($content, $redflag) != false && strpos($content, $redflag) <= 200) { $content = "<p>Hyperlink in body. Click View to see details.</p>"; } 
+            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.</p>"; } 
                 $content = substr($content,0,200)." ...<br>";
                 $content = str_replace("< ", "", $content); //replace a bad cut if a <p> or <li> gets cut
-                $content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
+                //$content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
             }
             elseif (strlen($content) >= 100 && $postimage != ""){
             	//handle posts with just a link exception
             	if (strpos($content, $redflag) != false && strpos($content, $redflag) <= 100) { $content = "<p>Hyperlink in body. Click View to see details.</p>"; }
-            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.<p>"; } 
+            	if (strpos($content, $redflag2) != false && strpos($content, $redflag2) <= 200) { $content = "<p>Image in body. Click View to see details.</p>"; } 
                 $content = substr($content,0,100)." ...<br>";
                 $content = str_replace("< ", "", $content); //replace a bad cut if a <p> or <li> gets cut
-                $content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
+                //$content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
             }
 
-            if ($item < 4){
-                echo "<td>
-                    <form method='post' action='viewpost.php'>       
-                    <div class='postlink overview' style='background-color: $postcolor;'><strong>Author: $name <br>Note: $postname</strong>
-                    <br><strong>$postdate</strong>";
-                if($postimage != "none" && $postimage != null){ echo "<br><div style='text-align: center;'><img src='$postimage' style='max-height: 80px;'></div>"; }
-                echo "<br>$content<br>
-                    <input type='hidden' name='name' value='$name'>
-                    <input type='hidden' name='postname' value='$postname'>
-                    <input type='hidden' name='postcolor' value='$postcolor'>
-                    <input type='hidden' name='postid' value='$postid'>
-                    <input type='submit' value='VIEW' class='view'></div></form></td>";           
-                $item++;
-            
-            }
-            
-            elseif($item >= 4){
-                $item=1;
-                echo "</tr><tr>";
-                echo "<td><form method='post' action='viewpost.php'>       
-                    <div class='postlink overview' style='background-color: $postcolor;'><strong>Author: $name <br>Note: $postname</strong>
-                    <br><strong>$postdate</strong>";
-                if($postimage != "none" && $postimage != null){ echo "<br><div style='text-align: center;'><img src='$postimage' style='max-height: 80px;'></div>"; }
-                echo "<br>$content<br>
-                    <input type='hidden' name='name' value='$name'>
-                    <input type='hidden' name='postname' value='$postname'>
-                    <input type='hidden' name='postcolor' value='$postcolor'>
-                    <input type='hidden' name='postid' value='$postid'>
-                    <input type='submit' value='VIEW' class='view'></div></form></td>";
-            
-            }
+            echo "<div class='postlink overview' style='background-color: $postcolor;'>
+            	<strong>Author: $name <br>Note: $postname</strong>
+                <br><strong>$postdate</strong>";
+            if($postimage != "none" && $postimage != null){ echo "<br><img src='$postimage' style='max-height: 80px;'>"; }
+            echo "<br>$content<br>
+            	<form method='post' action='viewpost.php'>
+                <input type='hidden' name='name' value='$name'>
+                <input type='hidden' name='postname' value='$postname'>
+                <input type='hidden' name='postcolor' value='$postcolor'>
+                <input type='hidden' name='postid' value='$postid'>
+                <input type='submit' value='VIEW' class='view'></form></div>";
+
         }
-        echo "</tr>";
         
         //Capture tasks for the upcoming tasks alert
         $col2 = $db->tasks;
@@ -126,29 +105,29 @@
         echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
 		<img class='closepopup' onclick='tasksdue()' src='close.png'>
 		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong>";
-	foreach ($tasklist as $taskitem) {
-		$taskdate = strtotime($taskitem['duedate']);
-		$difference = abs($taskdate - $todaysdate);
-		if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
-			echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
-			$duetaskcount++;
+		foreach ($tasklist as $taskitem) {
+			$taskdate = strtotime($taskitem['duedate']);
+			$difference = abs($taskdate - $todaysdate);
+			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
+				echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
+				$duetaskcount++;
+			}
 		}
-	}
-	echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
-		<input type='hidden' id='taskcount' value='$duetaskcount'>";
-	if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
-		echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
-	}
-	else { 
-		$_SESSION['popupseen'] = "notyet"; 
-		echo "<input type='hidden' id='alreadyshown' value='notyet'>";
-	}
-	echo "</div>";
+		echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
+			<input type='hidden' id='taskcount' value='$duetaskcount'>";
+		if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
+			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
+		}
+		else { 
+			$_SESSION['popupseen'] = "notyet"; 
+			echo "<input type='hidden' id='alreadyshown' value='notyet'>";
+		}
+		echo "</div>";
     }
     else { echo "<br><br>Sorry, username and password are unknown. Please try to log in again."; }
 
 ?>
-</table>
+
 </td></tr></table>
 </body>
 <script>
