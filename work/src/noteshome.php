@@ -85,7 +85,7 @@
             echo "<div class='postlink overview' style='background-color: $postcolor;'>
             	<strong>Author: $name <br>Note: $postname</strong>
                 <br><strong>$postdate</strong>";
-            if($postimage != "none" && $postimage != null){ echo "<br><img src='$postimage' style='max-height: 80px;'>"; }
+            if($postimage != "none" && $postimage != null){ echo "<br><div style='text-align: center;'><img src='$postimage' style='max-height: 80px;'></div>"; }
             echo "<br>$content<br>
             	<form method='post' action='viewpost.php'>
                 <input type='hidden' name='name' value='$name'>
