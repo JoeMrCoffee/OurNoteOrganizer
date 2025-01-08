@@ -21,6 +21,12 @@ Alternatively, for users looking to run in a more permenant environment using ph
 
 Once running the containers without errors, navigate to the localhost or address/domain name of the host system. The home screen should appear. Default username is 'admin', password is also 'admin'. The password can be changed once logged in.
 
+#### Troubleshooting MongoDB bring up:
+
+By default the MongoDB version will be the latest version available in Docker Hub. However, MongoDB 5 and above requires that the CPU of the host supports AVX technology. Testing on a Celeron J4005 host (no AVX on this SKU), changing the docker-compose.yml file provided from 'image: mongo' to 'imaage: mongo:4' works to bring up the system. 
+
+Ref: [MongoDB Docker Ref](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-community-with-docker/)
+
 #### Run through: 
 
 <a href='https://www.youtube.com/watch?v=tx--3IZ9JIU' target='_blank'>Run through video on YouTube</a>
@@ -86,6 +92,21 @@ Task management allows for group members to assign tasks to any post / note to o
 Clicking 'MY TASKS' will show a full list of tasks assigned to the login user. There is also a notification built into the HOME screen. The alert logic is to list all tasks upcoming within 7 days, with a prompt to view them in the 'MY TASKS' section. The alert appears each time on first login or page load of the 'HOME' screen. To clear the notification, simply visit the 'MY TASKS' page and a cookie/ SESSION variable will be set to stop the popup until logout and next login. 
 <div align='center'><img src='OurNoteOrganizer-taskalert.png' width='500px'></div>
 
+### Back up and restore:
+
+MongoDB can be backed up using the mongosh commands mongodump and mongorestore. The mongosh tools need to be installed on the host system, and the host fields in the below commands needs to point to the container IP address which can be accessed running 'docker inspect mongodb'.
+
+Examples:
+```
+Dump:
+mongodump --host=<Domain/IP> --port=27017 -u=<user> -p=<password> --authenticationDatabase=admin --db=notestest
+
+Restore:
+mongorestore --host <Domian/IP> --port=27017 --authenticationDatabase=admin -u=<user> -p=<password> --db=<db to restore> <backup folder location>
+
+```
+Relevant images will also need to be copied to the /images directory as they are not saved in the mongodb database, rather just linked per post.
+
 ### Mongo Express
 
 The docker-compose.yml file includes the parameters to also create a Mongo Express container that allows for easier management and debugging of the MongoDB environment. It is commented out as it can be a security risk if deployed 24/7 in a production environment. 
@@ -95,7 +116,6 @@ Mongo Express is a really handy tool to do fairly complex tasks with the MongoDB
 I have found that the Mongo Express container can often fail to start if the MongoDB container is started at the same time. Based on what I have seen in the docker-compose start output, I believe this is due to the MongoDB container provisioning time takes longer and if it isn't ready to accept the Mongo Express connection, the Mongo Express container terminates. Simply running a 'docker start mongoex' command once the MongoDB container is fully running has proven a reliable work around. 
 
 ### A word on TinyMCE
-
 
 TinyMCE is an external text editor which is used to help enhance the ease for writing and editing posts. It is an external tool that requires connectivity to external networks in order to function. For environments that do not have external Internet connectivity a standard textarea that does not offer rich formatting is employed. 
 
