@@ -32,10 +32,10 @@
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchlow]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchup]],
 	            ['groups' => ['$in' => $groupsarray], 'postname'=> ['$regex'=>$notesearchupper]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearch]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchup]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchlow]],
-	            ['groups' => ['$in' => $groupsarray], 'groups'=> ['$regex'=>$notesearchupper]]
+	            ['groups' => ['$in' => $groupsarray, '$regex'=>$notesearch]],
+	            ['groups' => ['$in' => $groupsarray, '$regex'=>$notesearchup]],
+	            ['groups' => ['$in' => $groupsarray, '$regex'=>$notesearchlow]],
+	            ['groups' => ['$in' => $groupsarray, '$regex'=>$notesearchupper]]
                 ]]);    
 	    }
 	    //This returns all values if the search bar is not used or has yet to be used
