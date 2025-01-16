@@ -4,7 +4,7 @@
 
     if ($validity == "valid") {
         $col = $db->tasks;
-        $tasklist = $col -> find(['taskowner' => $loginuser]);
+        $tasklist = $col -> find(['taskowner' => $loginuser],['sort' => ['taskstatus'=> -1, 'duedate'=> 1]]);
         $_SESSION['popupseen'] = "alreadyshown";
         //Main page
         echo "<h4>Your tasks</h4>
