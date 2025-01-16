@@ -6,6 +6,13 @@
         $col = $db->tasks;
         $tasklist = $col -> find(['taskowner' => $loginuser],['sort' => ['taskstatus'=> -1, 'duedate'=> 1]]);
         $_SESSION['popupseen'] = "alreadyshown";
+        //Color formating
+        function bgcolor($count){
+        	if ($count % 2 == 0){ echo "<tr style='background-color: #E8E8E8;'>"; }
+        	else { echo "<tr>";}
+        }
+        $color = 1;
+        
         //Main page
         echo "<h4>Your tasks</h4>
             <table width='100%' class='postlink' align='center'>
@@ -15,8 +22,10 @@
             <th></th><th></th></tr>";
 
         foreach ($tasklist as $taskitem) {
-            echo "<form method='post' action='viewpost.php'><tr>
-                <td >".$taskitem['postname']."<input type='hidden' name='postname' value='".$taskitem['postname']."'></td>";
+            echo "<form method='post' action='viewpost.php'>";
+            bgcolor($color);
+            $color += 1;
+            echo "<td >".$taskitem['postname']."<input type='hidden' name='postname' value='".$taskitem['postname']."'></td>";
             if(isset($taskitem['taskcomment'])){
                 echo "<td >".$taskitem['taskcomment']."<input type='hidden' name='taskcomment' value='".$taskitem['taskcomment']."'></td>";
             }
