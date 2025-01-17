@@ -45,5 +45,11 @@
         </tr></table>
         <table class='bodypadding' width='80%' align='center' border='0' cellpadding='0'>
         <tr><td>";
+    
+    //Color formating
+    function bgcolor($count){
+    	if ($count % 2 == 0){ echo "<tr style='background-color: #E8E8E8;'>"; }
+    	else { echo "<tr>";}
+    }
       
 ?>

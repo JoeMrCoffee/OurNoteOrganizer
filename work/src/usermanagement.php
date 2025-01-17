@@ -12,12 +12,17 @@
             
         if($adminstatus == "yes"){ echo "<th width='120px'>Edit</th><th></th></tr>"; }
 		else { "<th width='120px'></th><th></th></tr>"; }
+		
+		//counter for the color fomatting. Root function in titlebar.php
+        $color = 1;
 
         foreach ($userlist as $userinfo) {
             //$usergroups = json_encode($userinfo['groups']);
             $usergroups = $userinfo['groups'];
-            echo "<form method='post' action='useredit.php'><tr>
-                <td width='150px'>".$userinfo['username']."<input type='hidden' name='username' value='".$userinfo['username']."'></td>
+            echo "<form method='post' action='useredit.php'>";
+            bgcolor($color);
+            $color += 1;
+            echo "<td width='150px'>".$userinfo['username']."<input type='hidden' name='username' value='".$userinfo['username']."'></td>
                 <td>$usergroups<input type='hidden' name='usergroups' value='$usergroups'></td>
                 <input type='hidden' name='password' value='".$userinfo['password']."'>
                 <td>";

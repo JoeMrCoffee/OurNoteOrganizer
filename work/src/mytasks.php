@@ -6,11 +6,8 @@
         $col = $db->tasks;
         $tasklist = $col -> find(['taskowner' => $loginuser],['sort' => ['taskstatus'=> -1, 'duedate'=> 1]]);
         $_SESSION['popupseen'] = "alreadyshown";
-        //Color formating
-        function bgcolor($count){
-        	if ($count % 2 == 0){ echo "<tr style='background-color: #E8E8E8;'>"; }
-        	else { echo "<tr>";}
-        }
+        
+		//counter for the color fomatting. Root function in titlebar.php
         $color = 1;
         
         //Main page
