@@ -44,9 +44,12 @@
                     Date: ',$post['date'],'<br><br>Groups: ',$post['groups'],'<br><br>Content:<br>', $post['blog']."</div>";
             }
         }
-        
+        //Delete the post
         elseif(isset($_POST['Delete'])){
             $deletePost = $col->deleteOne(['_id' => new MongoDB\BSON\ObjectId("$postid")]);
+            //Also clear out the associated tasks
+            $coltasks = $db -> tasks;
+            $deltasks = $coltasks->deleteMany([ 'postid' => $postid ]);
 	        echo "<h3>Post deleted successfully</h3>";
         }
     }

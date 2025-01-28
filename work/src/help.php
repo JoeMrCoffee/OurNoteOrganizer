@@ -29,6 +29,8 @@
 
 <p>Tasks can be added to posts and assigned to users within the group that the post belongs to. This allows others to collaborate more actively because the tasks can be tracked, and if a task or tasks are do within 7 days a notification will show for the user on first login. </p4>
 
+<p><strong>IMPORTANT: </strong> As of January 2025, deleting a post will also remove the tasks associated with the post. Please ensure that all associated Tasks are no longer relevant or are all closed in addition with the post content as well. </p>
+
 <h4>User and group management</h4>
 
 <p>Users and their associated groups can be adjusted in the 'USERS' section. Admins can adjust the user settings including the associated groups for each user, and add or delete users. Users can adjust their own passwords using the dropdown under the user name. If a user wants to create a new Group and assign other users to it, click 'Add Group' and enter the new group name and select which users should be in it.</p>
@@ -45,7 +47,7 @@
 
 <p>The directory permissions of the 'image' directory is not the correct permission level/ownership. On a production system with Apache running natively (i.e. VM or physical deployment) the best practice would be to run 'chown www-data:www-data images' for most Linux derivatives. Per the Docker containers provided, running a volume passthrough can mean that the folder is running from a host that does not have the Apache user or group. For testing what has worked is running 'chmod 777 images' to allow write and execute access to the container. This method is probably not suitable for real production, but can work for those interested in playing with the project or can ensure a strong firewalled environment.</p>
 
-    <p>The file size may be simply too large to upload. In the Docker environment included, the default upload_max_filesize is 2 MB (this can be shown in the phpinfo.php page also included). To adjust this a user can change the config.ini files in PHP, but do so with caution and also bear in mind timeout time and other netwokring factors. This project is NOT designed to be a file upload service.</p>
+<p>The file size may be simply too large to upload. In the Docker environment included, the default upload_max_filesize is 2 MB (this can be shown in the phpinfo.php page also included). To adjust this a user can change the config.ini files in PHP, but do so with caution and also bear in mind timeout time and other netwokring factors. This project is NOT designed to be a file upload service.</p>
 
 <p>For more information about OurNoteOrganizer please visit the Github project page at <a href='https://github.com/JoeMrCoffee/OurNoteOrganizer' target='_blank'>HERE</a></p>
          </div>";
