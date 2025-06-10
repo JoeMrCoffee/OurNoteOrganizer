@@ -104,16 +104,16 @@
 
         echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
 		<img class='closepopup' onclick='tasksdue()' src='close.png'>
-		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong>";
+		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong><ul>";
 		foreach ($tasklist as $taskitem) {
 			$taskdate = strtotime($taskitem['duedate']);
-			$difference = abs($taskdate - $todaysdate);
+			$difference = ($taskdate - $todaysdate);
 			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
-				echo "<p>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</p>";
+				echo "<li>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</li>";
 				$duetaskcount++;
 			}
 		}
-		echo "<p>See more in <a href='mytasks.php'>MY TASKS</a></p>
+		echo "</ul><p>See more in <a href='mytasks.php'>MY TASKS</a></p>
 			<input type='hidden' id='taskcount' value='$duetaskcount'>";
 		if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
 			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
