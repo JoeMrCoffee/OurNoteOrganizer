@@ -43,15 +43,50 @@
 	        ['name' => $loginuser],
 	        ['groups' => ['$in' => $groupsarray]]
 	        ]], ['sort' => ['date'=> -1]]); }
+        
+        //This is the alert of upcoming tasks due or overdue. 
+        //Logic is if there are open tasks for the user, on first log in they will see tasks due in 7 days or less
+        //Overdue tasks will show as well. 
+        //07-20-2025 update - this was moved up in the page to help with loading the close icon 
+		//(otherwise it will load too slowly if there are a lot of other images in the posts being loaded first).
+		//Capture tasks for the upcoming tasks alert
+        $col2 = $db->tasks;
+        $tasklist = $col2 -> find(['taskowner' => $loginuser]);
+        $duetaskcount = 0; //this is to help trigger the javascript to show the popup
+        $todaysdate = time();
 
-
-
+        echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
+		<img class='closepopup' onclick='tasksdue()' src='close.png'>
+		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong><ul>";
+		foreach ($tasklist as $taskitem) {
+			$taskdate = strtotime($taskitem['duedate']);
+			$difference = ($taskdate - $todaysdate);
+			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
+				echo "<li>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</li>";
+				$duetaskcount++;
+			}
+		}
+		echo "</ul><p>See more in <a href='mytasks.php'>MY TASKS</a></p>
+			<input type='hidden' id='taskcount' value='$duetaskcount'>";
+		if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
+			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
+		}
+		else { 
+			$_SESSION['popupseen'] = "notyet"; 
+			echo "<input type='hidden' id='alreadyshown' value='notyet'>";
+		}
+		echo "</div>";
+		//Alert end.
+		
+		
         //Search bar
         echo "<div class='search'>
         <form method='post' action='".$_SERVER['PHP_SELF']."'>    
         <input name='notesearch' type='text' class='search' placeholder='Search by group or post name'>  
         <input class='search' type='submit' value='SEARCH' ></form>
         </div>";
+
+        //Posts and content logic - handles some specific exceptions.
         foreach ($record as $note) {
             $name=$note['name'];
             $postname=$note['postname'];
@@ -82,6 +117,7 @@
                 //$content .= "</li></ul>";  //this helps messing up other formatting if a list is used and cut  
             }
 
+			//All of the posts - either all or the search result
             echo "<div class='postlink overview' style='background-color: $postcolor;'>
             	<strong>Author: $name <br>Note: $postname</strong>
                 <br><strong>$postdate</strong>";
@@ -93,44 +129,15 @@
                 <input type='hidden' name='postcolor' value='$postcolor'>
                 <input type='hidden' name='postid' value='$postid'>
                 <input type='submit' value='VIEW' class='view'></form></div>";
-
         }
-        
-        //Capture tasks for the upcoming tasks alert
-        $col2 = $db->tasks;
-        $tasklist = $col2 -> find(['taskowner' => $loginuser]);
-        $duetaskcount = 0; //this is to help trigger the javascript to show the popup
-        $todaysdate = time();
-
-        echo "<div class='groupmgmt' style='visibility: hidden;' id='dueTask'>
-		<img class='closepopup' onclick='tasksdue()' src='close.png'>
-		<h4>Upcoming tasks</h4><strong><p>The following tasks are coming up in the next 7 days:</p></strong><ul>";
-		foreach ($tasklist as $taskitem) {
-			$taskdate = strtotime($taskitem['duedate']);
-			$difference = ($taskdate - $todaysdate);
-			if ( $difference <= 604800 && $taskitem['taskstatus'] == "Open") {
-				echo "<li>Item name: ".$taskitem['postname']." -- Due: ".$taskitem['duedate']."</li>";
-				$duetaskcount++;
-			}
-		}
-		echo "</ul><p>See more in <a href='mytasks.php'>MY TASKS</a></p>
-			<input type='hidden' id='taskcount' value='$duetaskcount'>";
-		if (isset($_SESSION['popupseen']) && $_SESSION['popupseen'] == "alreadyshown"){
-			echo "<input type='hidden' id='alreadyshown' value='alreadyshown'>";
-		}
-		else { 
-			$_SESSION['popupseen'] = "notyet"; 
-			echo "<input type='hidden' id='alreadyshown' value='notyet'>";
-		}
-		echo "</div>";
     }
     else { echo "<br><br>Sorry, username and password are unknown. Please try to log in again."; }
-
 ?>
 
 </td></tr></table>
 </body>
 <script>
+	//This is the view, dismiss logic for the pop up
 	function tasksdue() {
 		var taskcount = document.getElementById('taskcount').value;
 		var tasksduepopup = document.getElementById('dueTask');
